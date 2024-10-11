@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Camera cam;
-    [SerializeField] Transform playerTransform;
+    private Transform playerTransform;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     {
         cam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        playerTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
