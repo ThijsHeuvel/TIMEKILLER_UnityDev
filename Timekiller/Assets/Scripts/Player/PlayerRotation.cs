@@ -7,12 +7,13 @@ public class Movement : MonoBehaviour
 {
     Camera cam;
     [SerializeField] Transform playerTransform;
-    [SerializeField] Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
