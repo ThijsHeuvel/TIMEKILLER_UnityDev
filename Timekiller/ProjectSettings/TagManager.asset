@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Bullet
+  - InGameUI
   layers:
   - Default
   - TransparentFX
@@ -46,4 +49,7 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 2367573233
+    locked: 0
+  - name: UIWorld
+    uniqueID: 1190741883
     locked: 0
