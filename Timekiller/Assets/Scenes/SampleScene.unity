@@ -133,9 +133,10 @@ GameObject:
   - component: {fileID: 270793822}
   - component: {fileID: 270793824}
   - component: {fileID: 270793823}
+  - component: {fileID: 270793825}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: ScoreText
+  m_TagString: HudScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 296, y: 69}
+  m_AnchoredPosition: {x: 311, y: 89}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270793823
@@ -256,6 +257,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270793821}
   m_CullTransparentMesh: 1
+--- !u!114 &270793825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270793821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6fb76ab693efd49bf9313f580bc06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749378356
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1689347562696162583, guid: 8b48ca199d5e15f43b5cc359104c4516, type: 3}
-  spawnRadiusMin: 10
-  spawnRadiusMax: 25
+  spawnRadiusMin: 20
+  spawnRadiusMax: 40
   enemySpawnDelay: 10
 --- !u!4 &749378358
 Transform:
@@ -314,7 +327,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1110277631866582921, guid: a9db852e0c7c6e249a04a7fe27989952, type: 3}
       propertyPath: timeBetweenFiring
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4826397754923980743, guid: a9db852e0c7c6e249a04a7fe27989952, type: 3}
       propertyPath: m_LocalPosition.x
@@ -422,11 +435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -596,7 +609,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.92
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

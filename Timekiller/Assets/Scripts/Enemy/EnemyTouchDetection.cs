@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyTouchDetection : MonoBehaviour
 {
+    
     [SerializeField] private int hp = 100;
     [SerializeField] private float textDelay = 0.5f;
     private GameObject scoreObject;
@@ -34,7 +35,7 @@ public class EnemyTouchDetection : MonoBehaviour
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
             hp -= bullet.damage;
-            ShowDamagePopup(bullet.damage);
+            ShowDamagePopup(hp);
 
             // Destroy the bullet
             Destroy(collision.gameObject);
