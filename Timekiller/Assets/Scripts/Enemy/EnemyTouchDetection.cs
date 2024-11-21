@@ -7,14 +7,20 @@ public class EnemyTouchDetection : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
     [SerializeField] private float textDelay = 0.5f;
+    private GameObject scoreObject;
     private GameObject dmgPopUp;
     private GameObject canvas;
     private GameObject dmgPopupTxt;
+    ScoreScript _scoreScript;
     private void Start()
     {
         dmgPopUp = gameObject.transform.GetChild(0).gameObject;
         canvas = dmgPopUp.transform.GetChild(0).gameObject;
         dmgPopupTxt = canvas.transform.GetChild(0).gameObject;
+
+        scoreObject = GameObject.FindGameObjectWithTag("HudScoreText");
+        _scoreScript = scoreObject.GetComponent<ScoreScript>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +40,7 @@ public class EnemyTouchDetection : MonoBehaviour
             Destroy(collision.gameObject);
             if (hp <= 0)
             {
+                _scoreScript.AddScore(1);
                 Destroy(gameObject);
             }
         }
@@ -55,6 +62,7 @@ public class EnemyTouchDetection : MonoBehaviour
             Destroy(collision.gameObject);
             if (hp <= 0)
             {
+
                 Destroy(gameObject);
             }
         }
