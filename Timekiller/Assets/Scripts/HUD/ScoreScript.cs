@@ -6,15 +6,16 @@ using UnityEngine;
 public class ScoreScript : MonoBehaviour
 {
     private int score = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<TextMeshProUGUI>().text = score.ToString();
+        scoreText.text = score.ToString();
     }
 
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        gameObject.GetComponent<TextMeshProUGUI>().text = score.ToString();
+        scoreText.text = score.ToString();
     }
 }
