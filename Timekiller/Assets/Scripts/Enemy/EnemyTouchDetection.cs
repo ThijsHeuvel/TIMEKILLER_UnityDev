@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,7 @@ public class EnemyTouchDetection : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
     [SerializeField] private float textDelay = 0.5f;
+    [SerializeField] GameObject timerText;
     private GameObject scoreObject;
     private GameObject dmgPopUp;
     private GameObject canvas;
@@ -25,12 +27,7 @@ public class EnemyTouchDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // If the enemy collides with the player, the player will take damage
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Lose time
-        }
-        else if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
             hp -= bullet.damage;
@@ -41,28 +38,6 @@ public class EnemyTouchDetection : MonoBehaviour
             if (hp <= 0)
             {
                 _scoreScript.AddScore(1);
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Lose time
-        }
-        else if (collision.gameObject.CompareTag("Bullet"))
-        {
-            BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-            hp -= bullet.damage;
-            ShowDamagePopup(bullet.damage);
-
-            // Destroy the bullet
-            Destroy(collision.gameObject);
-            if (hp <= 0)
-            {
-
                 Destroy(gameObject);
             }
         }

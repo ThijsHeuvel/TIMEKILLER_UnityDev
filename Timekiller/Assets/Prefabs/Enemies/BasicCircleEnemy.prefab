@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   textDelay: 0.5
+  timerText: {fileID: 298995109430848274, guid: 8bce2acb5d36fae4cb9cee3f5b3410ed, type: 3}
 --- !u!114 &376038273848409957
 MonoBehaviour:
   m_ObjectHideFlags: 0

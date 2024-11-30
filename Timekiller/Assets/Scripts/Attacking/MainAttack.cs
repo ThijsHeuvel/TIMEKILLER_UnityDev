@@ -28,7 +28,7 @@ public class MainAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire && !PauseMenuScript.GameIsPaused)
+        if (Input.GetMouseButton(0) && canFire && !PauseMenuScript.GameIsPaused && !TakeDamageHandler.IsDead)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);

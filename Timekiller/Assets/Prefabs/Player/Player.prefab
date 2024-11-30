@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 637068216133148420}
   - component: {fileID: 2729563066816277508}
   - component: {fileID: 1110277631866582921}
+  - component: {fileID: 2575350163751790714}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -241,3 +242,16 @@ MonoBehaviour:
   bulletTransform: {fileID: 1627912127651723344}
   canFire: 1
   timeBetweenFiring: 0.25
+--- !u!114 &2575350163751790714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402690709103303586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75bcfb4e8f78b6c498fedcc2af7cdbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverMenu: {fileID: 0}

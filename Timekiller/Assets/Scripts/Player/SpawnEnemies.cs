@@ -45,8 +45,15 @@ public class SpawnEnemies : MonoBehaviour
     {
         while (true)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(enemySpawnDelay); // Wait for 3 seconds before spawning another enemy
+            if (!TakeDamageHandler.IsDead)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(enemySpawnDelay); // Wait for 3 seconds before spawning another enemy
+            }
+            else
+            {
+                yield return null;
+            }
         }
     }
 }
