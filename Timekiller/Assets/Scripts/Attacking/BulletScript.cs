@@ -7,12 +7,16 @@ public class BulletScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
-    public float force;
+    private float force;
     public float lifeTime;
-    public int damage;
     // Start is called before the first frame update
     void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        force = player.GetComponent<PlayerUpgradeScript>().bulletForce;
+
+        PlayerUpgradeScript.OnTriggerEvent.AddListener(Update);
+
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -32,5 +36,10 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void UpdateForce()
+    {
+
     }
 }

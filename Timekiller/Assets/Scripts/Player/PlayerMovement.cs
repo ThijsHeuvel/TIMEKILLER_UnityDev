@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float playerSpeed = 7.0f;
+    private float playerSpeed;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
+    private PlayerUpgradeScript playerUpgradeScript;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        playerUpgradeScript = gameObject.GetComponent<PlayerUpgradeScript>();
+        PlayerUpgradeScript.OnTriggerEvent.AddListener(UpdateSpeed);
+        playerSpeed = playerUpgradeScript.fireRate;
     }
 
     void Update()
@@ -20,5 +25,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = movementDirection.normalized * playerSpeed; // Add .normalized to make sure player doesnt move faster diagonally
+    }
+
+    void UpdateSpeed()
+    {
+        playerSpeed = playerUpgradeScript.playerSpeed;
     }
 }

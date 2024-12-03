@@ -9,10 +9,12 @@ public class EnemyTouchDetection : MonoBehaviour
     [SerializeField] private int hp = 100;
     [SerializeField] private float textDelay = 0.5f;
     [SerializeField] GameObject timerText;
+    private GameObject player;
     private GameObject scoreObject;
     private GameObject dmgPopUp;
     private GameObject canvas;
     private GameObject dmgPopupTxt;
+    private PlayerUpgradeScript playerUpgradeScript;
     ScoreScript _scoreScript;
     private void Start()
     {
@@ -23,6 +25,9 @@ public class EnemyTouchDetection : MonoBehaviour
         scoreObject = GameObject.FindGameObjectWithTag("HudScoreText");
         _scoreScript = scoreObject.GetComponent<ScoreScript>();
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerUpgradeScript = player.GetComponent<PlayerUpgradeScript>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,8 +35,8 @@ public class EnemyTouchDetection : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-            hp -= bullet.damage;
-            ShowDamagePopup(bullet.damage);
+            hp -= playerUpgradeScript.bulletDamage;
+            ShowDamagePopup(playerUpgradeScript.bulletDamage);
 
             // Destroy the bullet
             Destroy(collision.gameObject);

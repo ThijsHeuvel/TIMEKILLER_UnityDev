@@ -8,11 +8,13 @@ public class MainAttack : MonoBehaviour
     public Transform bulletTransform;
     public bool canFire;
     private float timer;
-    public float timeBetweenFiring;
+    private float timeBetweenFiring;
+    private PlayerUpgradeScript playerUpgradeScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeBetweenFiring = playerUpgradeScript.fireRate;
+        PlayerUpgradeScript.OnTriggerEvent.AddListener(UpdateDelay);
     }
 
     // Update is called once per frame
@@ -33,5 +35,10 @@ public class MainAttack : MonoBehaviour
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
+    }
+
+    void UpdateDelay()
+    {
+        timeBetweenFiring = playerUpgradeScript.fireRate;
     }
 }
