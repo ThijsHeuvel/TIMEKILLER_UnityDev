@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         
         playerUpgradeScript = gameObject.GetComponent<PlayerUpgradeScript>();
         PlayerUpgradeScript.OnTriggerEvent.AddListener(UpdateSpeed);
-        playerSpeed = playerUpgradeScript.fireRate;
+        playerSpeed = playerUpgradeScript.playerSpeed;
     }
 
     void Update()

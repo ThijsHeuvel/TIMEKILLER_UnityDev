@@ -13,6 +13,7 @@ public class MainAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerUpgradeScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerUpgradeScript>();
         timeBetweenFiring = playerUpgradeScript.fireRate;
         PlayerUpgradeScript.OnTriggerEvent.AddListener(UpdateDelay);
     }

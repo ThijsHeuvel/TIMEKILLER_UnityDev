@@ -8,8 +8,8 @@ public class PlayerUpgradeScript : MonoBehaviour
     [SerializeField] BulletScript bulletScript;
     public static UnityEvent OnTriggerEvent = new UnityEvent();
     public int bulletDamage = 10;
-    public float fireRate = 2;
-    public float playerSpeed = 4.0f;
+    public float fireRate = 2f;
+    public float playerSpeed = 6.5f;
     public float bulletForce = 10.0f;
     public void UpgradeRandomStat()
     {
@@ -23,7 +23,7 @@ public class PlayerUpgradeScript : MonoBehaviour
             case 1:
                 if (fireRate >= 0.2f)
                 {
-                    fireRate -= 0.2f;
+                    fireRate -= 0.5f;
                     Debug.Log("Fire Rate upgraded: " + fireRate);
                 }
                 else
@@ -32,7 +32,7 @@ public class PlayerUpgradeScript : MonoBehaviour
                 }
                 break;
             case 2:
-                playerSpeed += 1.0f;
+                playerSpeed += 0.2f;
                 Debug.Log("Player Speed upgraded: " + playerSpeed);
                 break;
             case 3:
