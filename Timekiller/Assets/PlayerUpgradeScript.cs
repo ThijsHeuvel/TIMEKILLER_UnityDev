@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class PlayerUpgradeScript : MonoBehaviour
 {
     private TextMeshProUGUI upgradeTextContent;
+    private float textDelay = 1f;
     [SerializeField] GameObject upgradeText; 
     public static UnityEvent OnTriggerEvent = new UnityEvent();
     public int bulletDamage = 10;
@@ -21,7 +22,7 @@ public class PlayerUpgradeScript : MonoBehaviour
 
     public void UpgradeRandomStat()
     {
-        int stat = Random.Range(0, 5);
+        int stat = Random.Range(0, 4);
         switch (stat)
         {
             case 0:
@@ -51,7 +52,7 @@ public class PlayerUpgradeScript : MonoBehaviour
         UpdateValues();
     }
 
-    float textDelay = 1f;
+
 
     private void Update()
     {
