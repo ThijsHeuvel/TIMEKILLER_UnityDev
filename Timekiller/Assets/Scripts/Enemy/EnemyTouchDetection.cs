@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyTouchDetection : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
-    [SerializeField] private float textDelay = 0.5f;
+    [SerializeField] private float damagePopupDelay = 0.5f;
     [SerializeField] GameObject timerText;
     private GameObject player;
     private GameObject scoreObject;
@@ -35,11 +35,14 @@ public class EnemyTouchDetection : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-            hp -= playerUpgradeScript.bulletDamage;
-            ShowDamagePopup(playerUpgradeScript.bulletDamage);
+
+            int fluctuatingDamage = playerUpgradeScript.bulletDamage + UnityEngine.Random.Range(-2, 3); // Random between -2 and +2
+            fluctuatingDamage = Mathf.Max(1, fluctuatingDamage); // Ensure the damage is always at least 1
+
+            hp -= fluctuatingDamage;
+            ShowDamagePopup(fluctuatingDamage);
 
             // Destroy the bullet
-            Destroy(collision.gameObject);
             if (hp <= 0)
             {
                 _scoreScript.AddScore(1);
@@ -50,9 +53,9 @@ public class EnemyTouchDetection : MonoBehaviour
 
     private void Update()
     {
-        if (textDelay > 0)
+        if (damagePopupDelay > 0)
         {
-            textDelay -= Time.deltaTime;
+            damagePopupDelay -= Time.deltaTime;
         }
         else
         {
@@ -63,7 +66,7 @@ public class EnemyTouchDetection : MonoBehaviour
 
     private void ShowDamagePopup(int damage)
     {
-        textDelay = 0.5f;
+        damagePopupDelay = 0.5f;
         dmgPopUp.SetActive(true);
         dmgPopupTxt.GetComponent<TextMeshProUGUI>().text = damage.ToString();
     }

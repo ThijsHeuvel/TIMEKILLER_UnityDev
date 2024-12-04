@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerUpgradeScript : MonoBehaviour
 {
-    [SerializeField] BulletScript bulletScript;
+    private TextMeshProUGUI upgradeTextContent;
+    [SerializeField] GameObject upgradeText; 
     public static UnityEvent OnTriggerEvent = new UnityEvent();
     public int bulletDamage = 10;
-    public float fireRate = 2f;
-    public float playerSpeed = 6.5f;
+    public float fireRate = 1.3f;
+    public float playerSpeed = 7.5f;
     public float bulletForce = 10.0f;
+
+    private void Start()
+    {
+        upgradeTextContent = upgradeText.GetComponent<TextMeshProUGUI>();
+    }
+
     public void UpgradeRandomStat()
     {
         int stat = Random.Range(0, 5);
@@ -18,13 +26,13 @@ public class PlayerUpgradeScript : MonoBehaviour
         {
             case 0:
                 bulletDamage += 5;
-                Debug.Log("Damage upgraded: " + bulletDamage);
+                ShowMessage("Damage upgraded: " + bulletDamage);
                 break;
             case 1:
-                if (fireRate >= 0.2f)
+                if (fireRate > 0.1f)
                 {
-                    fireRate -= 0.5f;
-                    Debug.Log("Fire Rate upgraded: " + fireRate);
+                    fireRate -= 0.1f;
+                    ShowMessage("Fire Rate upgraded: " + fireRate + "s");
                 }
                 else
                 {
@@ -33,14 +41,35 @@ public class PlayerUpgradeScript : MonoBehaviour
                 break;
             case 2:
                 playerSpeed += 0.2f;
-                Debug.Log("Player Speed upgraded: " + playerSpeed);
+                ShowMessage("Player Speed upgraded: " + playerSpeed + "M/s");
                 break;
             case 3:
                 bulletForce += 2.0f;
-                Debug.Log("Bullet Force upgraded: " + bulletForce);
+                ShowMessage("Bullet Speed upgraded: " + bulletForce + "M/s");
                 break;
         }
         UpdateValues();
+    }
+
+    float textDelay = 1f;
+
+    private void Update()
+    {
+        if (textDelay > 0)
+        {
+            textDelay -= Time.deltaTime;
+        }
+        else
+        {
+            upgradeText.SetActive(false);
+        }
+    }
+
+    private void ShowMessage(string content)
+    {
+        textDelay = 1f;
+        upgradeTextContent.text = content;
+        upgradeText.SetActive(true);
     }
 
 

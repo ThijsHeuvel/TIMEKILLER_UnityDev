@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     private Transform player;
-    public float speed = 5f;
+    public float speed = 1.5f;
 
     private Rigidbody2D rb; // Reference to Rigidbody2D
     private Vector2 movement; // Movement direction

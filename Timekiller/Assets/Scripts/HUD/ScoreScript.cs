@@ -6,9 +6,9 @@ using UnityEngine;
 public class ScoreScript : MonoBehaviour
 {
     private int score = 0;
-    public int ScoreToGo = 10;
-    private float difficulty = 1f;
+    public int ScoreToGo = 1;
     private PlayerUpgradeScript upgradeScript;
+    private int scoreToUpgrade = 1;
     [SerializeField] private TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,8 @@ public class ScoreScript : MonoBehaviour
         if (ScoreToGo <= 0)
         {
             upgradeScript.UpgradeRandomStat();
-            difficulty = difficulty / 100f * 120f;
-            ScoreToGo = Mathf.CeilToInt(difficulty / 10f);
+            scoreToUpgrade = scoreToUpgrade += 1;
+            ScoreToGo = scoreToUpgrade;
         }
         scoreText.text = ScoreToGo.ToString();
     }
