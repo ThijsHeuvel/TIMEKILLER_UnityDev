@@ -7,19 +7,25 @@ public class PauseMenuScript : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] GameObject timer;
+    private TimerScript timerScript;
 
-
-
+    private void Start()
+    {
+        timerScript = timer.GetComponent<TimerScript>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !TakeDamageHandler.IsDead)
         {
             if (GameIsPaused)
             {
+                timerScript.timerActive = true;
                 Resume();
             }
             else
             {
+                timerScript.timerActive = false;
                 Pause();
             }
         }

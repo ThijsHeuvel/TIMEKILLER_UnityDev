@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenuScript : MonoBehaviour
 {
+
     public void Retry()
     {
         Time.timeScale = 1f;
