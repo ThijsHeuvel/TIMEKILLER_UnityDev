@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerUpgradeScript : MonoBehaviour
 {
     private TextMeshProUGUI upgradeTextContent;
-    private float textDelay = 1f;
+    private float textDelay = 3f;
     [SerializeField] GameObject upgradeText; 
     public static UnityEvent OnTriggerEvent = new UnityEvent();
     public int bulletDamage = 10;
@@ -70,7 +70,7 @@ public class PlayerUpgradeScript : MonoBehaviour
 
     private void ShowMessage(string content)
     {
-        textDelay = 1f;
+        textDelay = 3f;
         upgradeTextContent.text = content;
         upgradeText.SetActive(true);
     }

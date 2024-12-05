@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TakeDamageHandler : MonoBehaviour
@@ -8,11 +9,14 @@ public class TakeDamageHandler : MonoBehaviour
     public static bool IsDead = false;
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] GameObject timer;
+    [SerializeField] GameObject scoreText;
+    private ScoreScript scoreScript;
     private TimerScript timerScript;
 
     private void Start()
     {
         timerScript = timer.GetComponent<TimerScript>();
+        scoreScript = scoreText.GetComponent<ScoreScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +25,8 @@ public class TakeDamageHandler : MonoBehaviour
         {
             timerScript.timerActive = false;
             IsDead = true;
+            scoreText.GetComponent<TextMeshProUGUI>().text = scoreScript.totalScore.ToString();
+
             Debug.Log("enemy collission");
             gameOverMenu.SetActive(true);
             Time.timeScale = 0f;
