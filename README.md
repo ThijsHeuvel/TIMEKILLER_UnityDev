@@ -39,15 +39,15 @@ In **TIMEKILLER**, you play as a computer virus infiltrating a system and battli
 - Earn **random upgrades** by reducing the countdown to **0** through enemy kills.  
 - Upgrades can include:  
   - Increased damage  
-  - Additional projectiles  
-  - New abilities like dashing or grenades  
-  - Special power-ups that change your playstyle  
+  - Faster fire-rate
+  - Faster movement speed  
 - There are **no permanent upgrades**—every run starts from scratch, making each attempt unique.
 
 ---
 
 ## Inspiration
 **TIMEKILLER** is inspired by popular Survivors-Like games such as **Vampire Survivors**, focusing on infinite scaling difficulty and fast-paced, skill-driven gameplay.
+But it also takes heavy inspiration from games such as **[diep.io](diep.io)**.
 
 ---
 
