@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeText: {fileID: 8875290740769127136}
-  bulletDamage: 100
+  bulletDamage: 15
   fireRate: 1.7
   playerSpeed: 6
   bulletForce: 10
