@@ -41,11 +41,13 @@ public class PlayerUpgradeScript : MonoBehaviour
                 }
                 break;
             case 2:
-                playerSpeed += 0.2f;
+                playerSpeed += 1f;
+                Mathf.CeilToInt(playerSpeed);
                 ShowMessage("Player Speed upgraded: " + playerSpeed + "M/s");
                 break;
             case 3:
                 bulletForce += 2.0f;
+                Mathf.CeilToInt(playerSpeed);
                 ShowMessage("Bullet Speed upgraded: " + bulletForce + "M/s");
                 break;
         }
