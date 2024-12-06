@@ -22,6 +22,7 @@ public class SpawnEnemies : MonoBehaviour
 
     private void Update()
     {
+        // Increase difficulty
         enemySpawnUpTimer -= Time.deltaTime;
         if (enemySpawnUpTimer <= 0)
         {
@@ -32,8 +33,7 @@ public class SpawnEnemies : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Debug.Log("Enemy Spawn Delay: " + enemySpawnDelay);
-        Debug.Log("Increasing Difficulty in : " + enemySpawnUpTimer + " seconds");
+        // Randomly spawn the enemy around the player
         Vector2 spawnDir = Random.insideUnitCircle.normalized;
         float distance = Random.Range(spawnRadiusMin, spawnRadiusMax);
 
@@ -43,6 +43,7 @@ public class SpawnEnemies : MonoBehaviour
 
     IEnumerator SpawnEnemiesPeriodically()
     {
+        // Spawn enemies periodically
         while (true)
         {
             if (!TakeDamageHandler.IsDead)

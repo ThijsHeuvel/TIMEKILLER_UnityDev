@@ -21,7 +21,7 @@ public class FollowPlayer : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null) // Check if the player exists
         {
             // Calculate the direction to the player
             Vector2 direction = (player.position - transform.position).normalized;

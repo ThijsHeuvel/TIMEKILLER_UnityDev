@@ -22,14 +22,14 @@ public class PlayerUpgradeScript : MonoBehaviour
 
     public void UpgradeRandomStat()
     {
-        int stat = Random.Range(0, 4);
-        switch (stat)
+        int stat = Random.Range(0, 4); // get random stat to increase
+        switch (stat) // choose the stat to increase
         {
-            case 0:
+            case 0: // Damage
                 bulletDamage += 5;
                 ShowMessage("Damage upgraded: " + bulletDamage);
                 break;
-            case 1:
+            case 1: // Fire rate
                 if (fireRate > 0.1f)
                 {
                     fireRate -= 0.1f;
@@ -40,12 +40,12 @@ public class PlayerUpgradeScript : MonoBehaviour
                     UpgradeRandomStat();
                 }
                 break;
-            case 2:
+            case 2: // Player travel speed
                 playerSpeed += 1f;
                 Mathf.CeilToInt(playerSpeed);
                 ShowMessage("Player Speed upgraded: " + playerSpeed + "M/s");
                 break;
-            case 3:
+            case 3: // Bullet travel speed
                 bulletForce += 2.0f;
                 Mathf.CeilToInt(playerSpeed);
                 ShowMessage("Bullet Speed upgraded: " + bulletForce + "M/s");
@@ -56,7 +56,7 @@ public class PlayerUpgradeScript : MonoBehaviour
 
 
 
-    private void Update()
+    private void Update() // Popup timer code
     {
         if (textDelay > 0)
         {
@@ -68,7 +68,7 @@ public class PlayerUpgradeScript : MonoBehaviour
         }
     }
 
-    private void ShowMessage(string content)
+    private void ShowMessage(string content) // Popup code
     {
         textDelay = 3f;
         upgradeTextContent.text = content;
@@ -76,7 +76,7 @@ public class PlayerUpgradeScript : MonoBehaviour
     }
 
 
-    public void UpdateValues()
+    public void UpdateValues() // event trigger code
     {
         OnTriggerEvent.Invoke();
     }

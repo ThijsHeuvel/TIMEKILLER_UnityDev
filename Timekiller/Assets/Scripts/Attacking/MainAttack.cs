@@ -21,7 +21,7 @@ public class MainAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canFire)
+        if (!canFire) // Timer for firing
         {
             timer += Time.deltaTime;
             if (timer > timeBetweenFiring)
@@ -31,14 +31,14 @@ public class MainAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire && !PauseMenuScript.GameIsPaused && !TakeDamageHandler.IsDead)
+        if (Input.GetMouseButton(0) && canFire && !PauseMenuScript.GameIsPaused && !TakeDamageHandler.IsDead) // Fire bullet if should be able to
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
     }
 
-    void UpdateDelay()
+    void UpdateDelay() // Update the delay between firing
     {
         timeBetweenFiring = playerUpgradeScript.fireRate;
     }

@@ -22,6 +22,7 @@ public class TakeDamageHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If player collides with enemy, game over
         if (collision.gameObject.CompareTag("Enemy"))
         {
             timerScript.timerActive = false;

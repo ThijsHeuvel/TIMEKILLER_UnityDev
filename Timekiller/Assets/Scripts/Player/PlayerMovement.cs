@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Get the movement direction
         float movementX;
         float movementY;
 
@@ -48,16 +49,18 @@ public class PlayerMovement : MonoBehaviour
         {
             movementY = 0;
         }
+        // Set the movement direction
 
         movementDirection = new Vector2(movementX, movementY); // Get Vector2 of the movement direction using Unity's input system
 
     }
-
+    // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
         rb.velocity = movementDirection.normalized * playerSpeed; // Add .normalized to make sure player doesnt move faster diagonally
     }
 
+    // Update the player speed
     void UpdateSpeed()
     {
         playerSpeed = playerUpgradeScript.playerSpeed;

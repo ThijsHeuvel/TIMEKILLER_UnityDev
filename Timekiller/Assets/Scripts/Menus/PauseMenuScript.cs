@@ -16,6 +16,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     private void Update()
     {
+        // Pause menu
         if (Input.GetKeyDown(KeyCode.Escape) && !TakeDamageHandler.IsDead)
         {
             if (GameIsPaused)

@@ -32,14 +32,17 @@ public class EnemyTouchDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If the enemy is hit by a bullet
         if (collision.gameObject.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-
+            // Get the damage from the player upgrade script and add a random value between -2 and +2
             int fluctuatingDamage = playerUpgradeScript.bulletDamage + UnityEngine.Random.Range(-2, 3); // Random between -2 and +2
             fluctuatingDamage = Mathf.Max(1, fluctuatingDamage); // Ensure the damage is always at least 1
 
+            // Apply the damage to the enemy
             hp -= fluctuatingDamage;
+            // show feedback for the damage
             ShowDamagePopup(fluctuatingDamage);
             healthCircle.fillAmount = hp / 100f;
 
@@ -54,6 +57,7 @@ public class EnemyTouchDetection : MonoBehaviour
 
     private void Update()
     {
+        // If the damage popup delay is greater than 0, decrease it
         if (damagePopupDelay > 0)
         {
             damagePopupDelay -= Time.deltaTime;
@@ -65,6 +69,7 @@ public class EnemyTouchDetection : MonoBehaviour
 
     }
 
+    // Show the damage popup
     private void ShowDamagePopup(int damage)
     {
         damagePopupDelay = 0.5f;

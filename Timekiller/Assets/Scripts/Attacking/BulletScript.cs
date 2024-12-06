@@ -16,14 +16,16 @@ public class BulletScript : MonoBehaviour
         force = player.GetComponent<PlayerUpgradeScript>().bulletForce;
 
         PlayerUpgradeScript.OnTriggerEvent.AddListener(Update);
-
+        
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        // Get the mouse position and set the direction of the bullet
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
+        // Set the velocity of the bullet
         rb.velocity = new Vector2(dir.x, dir.y).normalized * force;
-
+        // Set the rotation of the bullet
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
@@ -31,6 +33,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Destroy the bullet after a certain amount of time
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
