@@ -10,6 +10,7 @@ public class TakeDamageHandler : MonoBehaviour
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] GameObject timer;
     [SerializeField] GameObject scoreText;
+    [SerializeField] GameObject killsUntilUpgradeText;
     private ScoreScript scoreScript;
     private TimerScript timerScript;
 
@@ -26,6 +27,7 @@ public class TakeDamageHandler : MonoBehaviour
             timerScript.timerActive = false;
             IsDead = true;
             scoreText.GetComponent<TextMeshProUGUI>().text = scoreScript.totalScore.ToString();
+            killsUntilUpgradeText.GetComponent<TextMeshProUGUI>().text = "Total kills";
 
             Debug.Log("enemy collission");
             gameOverMenu.SetActive(true);

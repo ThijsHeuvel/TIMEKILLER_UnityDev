@@ -3,23 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyTouchDetection : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
     [SerializeField] private float damagePopupDelay = 0.5f;
-    [SerializeField] GameObject timerText;
+    [SerializeField] private Image healthCircle;
     private GameObject player;
     private GameObject scoreObject;
-    private GameObject dmgPopUp;
     private GameObject canvas;
     private GameObject dmgPopupTxt;
     private PlayerUpgradeScript playerUpgradeScript;
     ScoreScript _scoreScript;
     private void Start()
     {
-        dmgPopUp = gameObject.transform.GetChild(0).gameObject;
-        canvas = dmgPopUp.transform.GetChild(0).gameObject;
+        canvas = transform.GetChild(0).GetChild(0).gameObject;
+
         dmgPopupTxt = canvas.transform.GetChild(0).gameObject;
 
         scoreObject = GameObject.FindGameObjectWithTag("HudScoreText");
@@ -41,6 +41,7 @@ public class EnemyTouchDetection : MonoBehaviour
 
             hp -= fluctuatingDamage;
             ShowDamagePopup(fluctuatingDamage);
+            healthCircle.fillAmount = hp / 100f;
 
             // Destroy the bullet
             if (hp <= 0)
@@ -59,7 +60,7 @@ public class EnemyTouchDetection : MonoBehaviour
         }
         else
         {
-            dmgPopUp.SetActive(false);
+            dmgPopupTxt.SetActive(false);
         }
 
     }
@@ -67,7 +68,7 @@ public class EnemyTouchDetection : MonoBehaviour
     private void ShowDamagePopup(int damage)
     {
         damagePopupDelay = 0.5f;
-        dmgPopUp.SetActive(true);
+        dmgPopupTxt.SetActive(true);
         dmgPopupTxt.GetComponent<TextMeshProUGUI>().text = damage.ToString();
     }
 }
