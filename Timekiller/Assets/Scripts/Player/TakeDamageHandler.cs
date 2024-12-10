@@ -28,7 +28,15 @@ public class TakeDamageHandler : MonoBehaviour
             timerScript.timerActive = false;
             IsDead = true;
             scoreText.GetComponent<TextMeshProUGUI>().text = scoreScript.totalScore.ToString();
-            killsUntilUpgradeText.GetComponent<TextMeshProUGUI>().text = "Total kills";
+            if (scoreScript.totalScore > PlayerPrefs.GetInt("Highscore", 0))
+            {
+                PlayerPrefs.SetInt("Highscore", scoreScript.totalScore);
+                killsUntilUpgradeText.GetComponent<TextMeshProUGUI>().text = "NEW HIGHSCORE!";
+            }
+            else
+            {
+                killsUntilUpgradeText.GetComponent<TextMeshProUGUI>().text = "Total Score";
+            }
 
             Debug.Log("enemy collission");
             gameOverMenu.SetActive(true);
