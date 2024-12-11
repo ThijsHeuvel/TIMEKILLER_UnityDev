@@ -11,7 +11,10 @@ public class ScoreScript : MonoBehaviour
     public int ScoreToGo = 1;
     private PlayerUpgradeScript upgradeScript;
     private int scoreToUpgrade = 1;
+    private TextMeshProUGUI totalKillsTmp;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject totalKillsText;
+    [SerializeField] private GameObject untilUpgradeText;
 
     private LocalScaleTween localScaleTween = new LocalScaleTween // Tween for bottom left indicator
     {
@@ -20,8 +23,18 @@ public class ScoreScript : MonoBehaviour
         duration = 0.8f,
         easeType = EaseType.CubicInOut,
     };
+
+    private LocalPositionYTween localPositionYTween = new LocalPositionYTween 
+    {
+        duration = 0.8f,
+        easeType = EaseType.CubicInOut,
+    };
+
     void Start() // Get the player upgrade script
     {
+        localPositionYTween.from = (untilUpgradeText.transform.localPosition.y + 100f);
+        localPositionYTween.to = untilUpgradeText.transform.localPosition.y;
+        totalKillsTmp = totalKillsText.GetComponent<TextMeshProUGUI>();
         scoreText.text = ScoreToGo.ToString();
         upgradeScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerUpgradeScript>();
     }
@@ -30,8 +43,15 @@ public class ScoreScript : MonoBehaviour
     {
         gameObject.CancelTweens(); // Cancel all tweens to avoid overlapping
         gameObject.AddTween(localScaleTween); // Play the tween
+
+        untilUpgradeText.CancelTweens();
+        untilUpgradeText.AddTween(localPositionYTween);
         score += scoreToAdd; // change data in scores
         totalScore++;
+        if (totalKillsTmp != null)
+        {
+            totalKillsTmp.text = "Total kills: " + totalScore.ToString();
+        }
         ScoreToGo -= scoreToAdd;
 
         if (ScoreToGo <= 0) // If the score is less than or equal to 0, upgrade a random stat
