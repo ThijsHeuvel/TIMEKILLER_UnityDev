@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using Tweens;
 
 public class PlayerUpgradeScript : MonoBehaviour
 {
@@ -14,6 +15,14 @@ public class PlayerUpgradeScript : MonoBehaviour
     public float fireRate = 1.3f;
     public float playerSpeed = 7.5f;
     public float bulletForce = 10.0f;
+
+    LocalScaleTween localScaleTweenUpgrade = new LocalScaleTween
+    {
+        from = new Vector3(1.7f, 1.7f, 1.7f),
+        to = new Vector3(1f, 1f, 1f),
+        duration = 1.4f,
+        easeType = EaseType.CubicInOut
+    };
 
     private void Start()
     {
@@ -71,6 +80,8 @@ public class PlayerUpgradeScript : MonoBehaviour
     private void ShowMessage(string content) // Popup code
     {
         textDelay = 3f;
+        upgradeText.CancelTweens();
+        upgradeText.AddTween(localScaleTweenUpgrade);
         upgradeTextContent.text = content;
         upgradeText.SetActive(true);
     }
