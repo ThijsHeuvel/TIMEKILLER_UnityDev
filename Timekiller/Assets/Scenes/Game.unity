@@ -810,7 +810,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8024012793740104127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1927,18 +1927,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8875290740769127136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8024012793740104127}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 268.40582, y: -43.82367}
+  m_AnchoredPosition: {x: 1, y: 18.267914}
   m_SizeDelta: {x: 540.81177, y: 87.6472}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: -0.02, y: 1.21}
 --- !u!224 &2631062944464510602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeText: {fileID: 8875290740769127136}
   bulletDamage: 15
-  fireRate: 1.7
+  fireRate: 1.65
   playerSpeed: 6
   bulletForce: 10
 --- !u!223 &7918434047369577090

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Tweens;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
@@ -30,6 +31,14 @@ public class ScoreScript : MonoBehaviour
         easeType = EaseType.CubicInOut,
     };
 
+    private LocalRotationTween LocalRotationTween = new LocalRotationTween
+    {
+        from = Quaternion.Euler(0, 0, 10),
+        to = Quaternion.Euler(0, 0, 0),
+        duration = 0.8f,
+        easeType = EaseType.CubicInOut,
+    };
+
     void Start() // Get the player upgrade script
     {
         localPositionYTween.from = (untilUpgradeText.transform.localPosition.y + 100f);
@@ -46,6 +55,7 @@ public class ScoreScript : MonoBehaviour
 
         untilUpgradeText.CancelTweens();
         untilUpgradeText.AddTween(localPositionYTween);
+        untilUpgradeText.AddTween(LocalRotationTween);
         score += scoreToAdd; // change data in scores
         totalScore++;
         if (totalKillsTmp != null)

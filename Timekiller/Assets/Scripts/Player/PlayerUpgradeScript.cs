@@ -42,7 +42,7 @@ public class PlayerUpgradeScript : MonoBehaviour
                 if (fireRate > 0.1f)
                 {
                     fireRate -= 0.1f;
-                    ShowMessage("Fire Rate upgraded: " + fireRate + "s");
+                    ShowMessage("Fire Rate upgraded: " + (Mathf.Round(fireRate * 100)) / 100 + "s");
                 }
                 else
                 {

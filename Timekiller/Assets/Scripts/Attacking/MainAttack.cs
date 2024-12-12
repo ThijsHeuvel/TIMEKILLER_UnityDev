@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tweens;
 using UnityEngine;
 
 public class MainAttack : MonoBehaviour
@@ -10,6 +11,15 @@ public class MainAttack : MonoBehaviour
     private float timer;
     private float timeBetweenFiring;
     private PlayerUpgradeScript playerUpgradeScript;
+
+    LocalScaleTween shootScaleTween = new LocalScaleTween
+    {
+        from = new Vector3(0.4f, 0.52f, 1f),
+        to = new Vector3(0.75f, 0.25f, 1f),
+        duration = 0.15f,
+        easeType = EaseType.BackOut,
+    };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +43,8 @@ public class MainAttack : MonoBehaviour
 
         if (Input.GetMouseButton(0) && canFire && !PauseMenuScript.GameIsPaused && !TakeDamageHandler.IsDead) // Fire bullet if should be able to
         {
+            bulletTransform.gameObject.CancelTweens();
+            bulletTransform.gameObject.AddTween(shootScaleTween);
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
